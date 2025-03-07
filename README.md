@@ -53,7 +53,7 @@ This application supports multiple operating systems and requires some Python de
 4. **Run the application**:
    
    ```bash
-   python TAI-DDoS.py
+   python TAI-V2.py
    ```
 
 ### On Linux 🐧
@@ -83,7 +83,7 @@ This application supports multiple operating systems and requires some Python de
 4. **Run the application**:
    
    ```bash
-   python3 TAI-DDoS.py
+   python3 TAI-V2.py
    ```
 
 ### On macOS 🍏
@@ -112,7 +112,7 @@ This application supports multiple operating systems and requires some Python de
 4. **Run the application**:
    
    ```bash
-   python3 TAI-DDoS.py
+   python3 TAI-V2.py
    ```
 
 ## Usage 🛠️
