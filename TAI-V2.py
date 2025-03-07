@@ -242,13 +242,13 @@ def show_menu():
     print("\n===== 🎭Fsociety DDoS Tool🎭 =====")
     print("1. Target URL")
     print("2. Threads (Default: {})".format(DEFAULT_REQUESTS))
-    print("3. Stealth Mode (Saat ini: {})".format("Aktif" if stealth_mode else "Nonaktif"))
-    print("4. Proxy (Saat ini: {})".format("Aktif" if use_proxy else "Nonaktif"))
+    print("3. Stealth Mode (At the moment: {})".format("Active" if stealth_mode else "NonActive"))
+    print("4. Proxy (At the moment: {})".format("Active" if use_proxy else "NonActive"))
     print("5. Attack")
     print("6. Exit")
     print("===============================")
-    print("PILIHAN : ")
-    choice = input("Pilih opsi: ")
+    print("CHOICE : ")
+    choice = input("Select an option: ")
     return choice
 
 # Variabel global untuk menyimpan opsi
@@ -271,19 +271,19 @@ def main():
         choice = show_menu()
 
         if choice == '1':
-            url = input("Masukkan Target URL: ")
+            url = input("Enter Target URL: ")
         elif choice == '2':
             try:
-                num_requests = int(input("Masukkan Jumlah Permintaan: "))
+                num_requests = int(input("Enter Request Amount: "))
             except ValueError:
                 print("Input tidak valid. Menggunakan jumlah permintaan default.")
                 num_requests = DEFAULT_REQUESTS
         elif choice == '3':
             stealth_mode = not stealth_mode
-            print("Stealth Mode sekarang: {}".format("Aktif" if stealth_mode else "Nonaktif"))
+            print("Stealth Mode sekarang: {}".format("Active" if stealth_mode else "NonActive"))
         elif choice == '4':
             use_proxy = not use_proxy
-            print("Penggunaan Proxy sekarang: {}".format("Aktif" if use_proxy else "Nonaktif"))
+            print("Penggunaan Proxy sekarang: {}".format("Active" if use_proxy else "NonActive"))
             if use_proxy:
                 print("Mengambil daftar proxy...")
                 proxies = asyncio.run(get_all_proxies())
@@ -296,7 +296,7 @@ def main():
                 proxies = []
         elif choice == '5':
             if not url:
-                print("Target URL belum dimasukkan. Silakan masukkan URL terlebih dahulu.")
+                print("Target URL has not been entered. Please enter the URL first.")
             else:
                 clear_screen()  # Bersihkan layar sebelum mencetak ASCII
                 print(ASCII_ART) # Cetak ASCII art di interface kedua
@@ -307,7 +307,7 @@ def main():
             print("\n--GOOD BYE FRIEND--")
             break
         else:
-            print("Opsi tidak valid. Silakan coba lagi.")
+            print("Invalid option. Please try again.")
 
 if __name__ == "__main__":
     main()
